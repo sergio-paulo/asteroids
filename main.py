@@ -2,6 +2,7 @@
 # the open-source pygame library
 # throughout this file
 import pygame
+import sys
 from constants import *
 from player import Player
 from asteroid import Asteroid
@@ -39,6 +40,11 @@ def main():
         pygame.display.flip()
         time = clock.tick(60)
         dt = time / 1000
-    
+        
+        for object in asteroids:
+            if player.colliding(object):
+                print("Game Over!")
+                sys.exit(0)
+                    
 if __name__ == "__main__":
     main()
